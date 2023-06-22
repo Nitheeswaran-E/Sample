@@ -1,0 +1,83 @@
+CREATE TABLE students (
+    sid int NOT NULL,
+    name varchar(255),
+    did varchar(255),
+    type  varchar(20),
+    city varchar(20),
+    PRIMARY KEY (sid)
+);
+
+create table Employee(
+  id int NOT NULL,
+  name varchar(20),
+  did varchar(20),
+  design varchar(20),
+  sal int,
+  stay varchar(20),
+  PRIMARY KEY (id)
+  );
+create table Dept(
+  did varchar(25),
+  d_name varchar(20),
+  h_id varchar(20),
+  NBA date,
+  bid varchar(20),
+  PRIMARY KEY (did)
+  );
+  
+  create table Block(
+  bid VARCHAR(20),
+  b_name varchar(20),
+  lift_st varchar(20),
+  PRIMARY KEY (bid)
+  );
+  
+  create table Hostel(
+  hid varchar(20),
+  hname varchar(20),
+  incharge varchar(20),
+  PRIMARY KEY (hid)
+  );
+  create table s_hall(
+  shid int,
+  bid varchar(20),
+  sname varchar(20),
+  num_seats int ,
+  PRIMARY KEY (shid)
+  );
+  create table hostel_st(
+  sid int,
+  hid varchar(20)
+  );
+  create table Dept1(
+  did varchar(25),
+  d_name varchar(20),
+  h_id int,
+  NBA date,
+  bid varchar(20),
+  PRIMARY KEY (did)
+  );
+  
+  ALTER TABLE STUDENTS  
+ADD FOREIGN KEY (did) REFERENCES DEPT (did);  
+  ALTER TABLE Employee  
+ADD FOREIGN KEY (did) REFERENCES DEPT (did);  
+ALTER TABLE Dept1  
+ADD FOREIGN KEY (h_id) REFERENCES Employee(id); 
+ALTER TABLE Dept1  
+ADD FOREIGN KEY (bid) REFERENCES block(bid); 
+
+ALTER TABLE s_hall 
+ADD FOREIGN KEY (bid) REFERENCES block(bid); 
+
+ALTER TABLE hostel_st  
+ADD FOREIGN KEY (sid) REFERENCES STUDENTS(sid);
+ALTER TABLE hostel_st  
+ADD FOREIGN KEY (hid) REFERENCES hostel(hid);
+
+select * from students;
+select * from employee;
+select * from Dept;
+select * from block;
+select * from s_hall;
+select * from hostel_st;
